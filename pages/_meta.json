@@ -1,15 +1,20 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "index": {
+    "title": "主页",
+    "type": "page"
+  },
+  "blog": {
+    "title": "个人成长系列",
+    "type": "page"
+  },
   "about": {
-    "title": "About",
+    "title": "关于我们",
     "type": "page"
   },
   "contact": {
-    "title": "Contact ↗",
+    "title": "立即体验",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://console.questionlearn.cn",
     "newWindow": true
   }
 }
