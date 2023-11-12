@@ -16,6 +16,7 @@ jobs:
         run: |
           ls -al
           pwd
+          npm i -g pnpm
           pnpm i
           pnpm build
       - name: Deploy
