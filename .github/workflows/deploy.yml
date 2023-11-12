@@ -17,7 +17,7 @@ jobs:
           ls -al
           pwd
           npm i -g pnpm
-          pnpm i
+          pnpm install --no-frozen-lockfile
           pnpm build
       - name: Deploy
         uses: easingthemes/ssh-deploy@main
