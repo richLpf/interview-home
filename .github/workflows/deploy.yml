@@ -1,0 +1,29 @@
+name: deploy interview
+
+on:
+  push:
+    branches:
+      - main # default branch
+      - feature/* 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build and Deploy
+        run: |
+          ls -al
+          pwd
+          pnpm i
+          pnpm build
+      - name: Deploy
+        uses: easingthemes/ssh-deploy@main
+        env:
+            SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+            ARGS: "-rlgoDzvc -i"
+            REMOTE_USER: ${{ secrets.REMOTE_USER }}
+            REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+            SOURCE: .next/
+            TARGET: /data/interview/home/
