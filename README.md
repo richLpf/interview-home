@@ -21,3 +21,5 @@ This project is licensed under the MIT License.
 nohup yarn start &
 
 kill -15 <PID>
+
+more
