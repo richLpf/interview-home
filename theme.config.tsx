@@ -20,7 +20,7 @@ const config: DocsThemeConfig = {
   //   link: 'https://discord.com',
   // },
   docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
-  head: () => [
+  head: [
     <link
       key="favicon"
       rel="icon"
