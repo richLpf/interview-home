@@ -24,7 +24,7 @@ const config: DocsThemeConfig = {
     <link
       key="favicon"
       rel="icon"
-      href="https://www.questionlearn.cn/images/favicon.ico"
+      href="/images/favicon.ico"
       type="image/x-icon"
     />
   ],
