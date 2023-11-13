@@ -26,5 +26,9 @@ jobs:
             ARGS: "-rlgoDzvc -i"
             REMOTE_USER: ${{ secrets.REMOTE_USER }}
             REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-            SOURCE: .next/
+            SOURCE: "*"
             TARGET: /data/interview/home/
+            EXCLUDE: node_modules/
+            SCRIPT_AGTER: |
+              pnpm start
+              echo 'done'
