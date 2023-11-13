@@ -20,4 +20,4 @@ This project is licensed under the MIT License.
 
 nohup yarn start &
 
-start
+kill -15 <PID>
