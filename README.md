@@ -23,3 +23,6 @@ nohup yarn start &
 kill -15 <PID>
 
 more
+
+## start app
+pm2 start ecosystem.config.js
