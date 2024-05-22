@@ -2,41 +2,42 @@
 import Link from 'next/link';
 import { useState } from 'react'
 
+
 const posts = [
     {
-      id: 1,
-      title: "SMS Marketing A/B Testing: How to Optimize Your Campaigns and Boost Revenue",
+      id: "gitbook",
+      title: "Gitbook搭建博客",
       date: "04 Dec, 2023",
-      description: "Introduction to SMS Marketing A/B Testing...",
-      category: "SMS",
+      description: "通过markdown完成博客的搭建",
+      category: "blog",
       imageUrl: "/images/demo1.png",
     },
     {
-      id: 2,
-      title: "Ready-to-use E-commerce SMS Templates to Increase Sales and Engage Customers",
+      id: "hexo",
+      title: "Hexo搭建博客",
       date: "01 Dec, 2023",
-      description: "Overview of SMS/MMS Templates for Ecommerce...",
-      category: "SMS",
+      description: "方便快捷的搭建博客",
+      category: "blog",
       imageUrl: "/images/demo1.png",
     },
     {
-      id: 3,
-      title: "How to Build a Successful SMS Marketing Campaign",
+      id: "gmeek",
+      title: "Gmeek搭建博客",
       date: "25 Nov, 2023",
-      description: "Steps to create an effective SMS marketing strategy...",
-      category: "Marketing",
+      description: "Github搭建博客，免费方便",
+      category: "blog",
       imageUrl: "/images/demo1.png",
     },
     {
-      id: 4,
-      title: "The Benefits of SMS Marketing for Small Businesses",
+      id: "wordPress",
+      title: "WordPress搭建博客",
       date: "18 Nov, 2023",
-      description: "Why SMS marketing is crucial for small businesses...",
-      category: "Business",
+      description: "接入数据库，方便文章管理，主题全",
+      category: "blog",
       imageUrl: "/images/demo1.png",
     },
     {
-      id: 5,
+      id: "6",
       title: "Top 5 SMS Marketing Tools You Should Use",
       date: "10 Nov, 2023",
       description: "A review of the best SMS marketing tools available...",
@@ -88,69 +89,70 @@ const posts = [
 const ITEMS_PER_PAGE = 8;
 
 export default function Home() {
-const [currentPage, setCurrentPage] = useState(1);
 
-const totalPages = Math.ceil(posts.length / ITEMS_PER_PAGE);
+  const [currentPage, setCurrentPage] = useState(1);
 
-const handleNextPage = () => {
-    if (currentPage < totalPages) {
-    setCurrentPage(currentPage + 1);
-    }
-};
+  const totalPages = Math.ceil(posts.length / ITEMS_PER_PAGE);
 
-const handlePreviousPage = () => {
-    if (currentPage > 1) {
-    setCurrentPage(currentPage - 1);
-    }
-};
+  const handleNextPage = () => {
+      if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+      }
+  };
 
-const currentPosts = posts.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-);
+  const handlePreviousPage = () => {
+      if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+      }
+  };
 
-return (
-    <div className="container mx-auto px-1">
+  const currentPosts = posts.slice(
+      (currentPage - 1) * ITEMS_PER_PAGE,
+      currentPage * ITEMS_PER_PAGE
+  );
+
+  return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <main className="py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {currentPosts.map((post) => (
-            <div key={post.id} className="border rounded-lg p-4">
+          <div key={post.id} className="border rounded-lg p-4 flex flex-col">
             <img src={post.imageUrl} alt={post.title} className="w-full h-auto rounded-lg mb-4" />
             <h3 className="text-xl font-bold mb-2">{post.title}</h3>
             <p className="text-gray-500 mb-2">{post.date}</p>
-            <p className="mb-4">{post.description}</p>
-            <Link className="text-blue-500 hover:underline" href={`/post/${post.id}`}>
-                Read More
+            <p className="mb-4 flex-grow">{post.description}</p>
+            <Link className="text-blue-500 hover:underline mt-auto" href={`/blog/${post.id}`}>
+              Read More
             </Link>
-            </div>
+          </div>
         ))}
-        </div>
-        <div className="flex justify-center mt-8">
+      </div>
+      <div className="flex justify-center mt-8">
         <button
-            className="px-3 py-1 border rounded-l-lg hover:bg-gray-200"
-            onClick={handlePreviousPage}
-            disabled={currentPage === 1}
+          className="px-3 py-1 border rounded-l-lg hover:bg-gray-200"
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
         >
-            &lt;
+          &lt;
         </button>
         {Array.from({ length: totalPages }, (_, index) => (
-            <button
+          <button
             key={index}
             className={`px-3 py-1 border-t border-b ${currentPage === index + 1 ? 'bg-gray-300' : 'hover:bg-gray-200'}`}
             onClick={() => setCurrentPage(index + 1)}
-            >
+          >
             {index + 1}
-            </button>
+          </button>
         ))}
         <button
-            className="px-3 py-1 border rounded-r-lg hover:bg-gray-200"
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
+          className="px-3 py-1 border rounded-r-lg hover:bg-gray-200"
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
         >
-            &gt;
+          &gt;
         </button>
-        </div>
+      </div>
     </main>
-    </div>
-);
+  </div>
+  );
 }

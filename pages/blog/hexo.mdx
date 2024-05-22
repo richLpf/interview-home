@@ -3,27 +3,52 @@ title: Hexo搭建博客
 permalink: hexo
 ---
 
-思考一个问题：为什么老师对课程那么熟悉，几乎所有的题目都会？
+## 一、初始化项目
+安装node，安装hexo
+```
+node -v
+npm install hexo -g
+```
+初始化项目
+```
+hexo init 
+//运行
+hexo serve 
+// 生成新的文章
+hexo new "new passage"
+// 生成html文件
+hexo generate
+// 部署远程服务器
+hexo deploy
+```
+## 二、部署github
+```
+npm install hexo-deployer-git -S
+hexo clean
+hexo deploy
+```
+_config.yml配置
+```
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: <你的仓库地址> # https://github.com/TJ-XiaJiaHao/TJ-XiaJiaHao.github.io
+  branch: master
+```
+访问站点: ​
+注意：
+1、后面要加上index.html,访问首页
+2、可以拉取代码，配置访问二级目录
 
-因为你只学习了一遍，而老师在当学生的时候学了好几年。
-当老师以后，上课前要提前把题目做一遍，给多个班讲好几遍。
-放学后，还要给个别同学讲一遍。
-然后每年来好几次。。你觉得能不熟悉吗？
-老师对知识的学习，也是在讲解过程中不断的加深理解。因为他要讲给你，如果自己不弄明白，如何讲清楚，如果被问倒，肯定要回去复盘，请教别的老师，不然再遇到更尴尬。
+## 三、部署Gitee
+如果向我一样是二级目录，则需要修改根目录下_config.yml
+```
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: https://pengfeilv.gitee.io/blog
+root: /blog
+```
+这里url访问的根路径就是二级目录，但css等文件是根据二级目录相对的，所以这里需要手动更改/blog，确保项目访问的静态文件路径正常
 
-费曼学习法，输出是最强大的学习力，而输出的方式有很多：
-
-### 1、给别人讲、交流
-为什么那些学霸总是什么都会，首先他学得好，然后同学都来问，第一人问他不会，然后学习一下，第二个人来问他就会了，甚至理解更深。
-很多大V，也是会不停的回答问题，因为问题可以帮助他们梳理自己的知识体系，加深理解。
-
-### 2、写文章
-你看到那么多免费的，有思考的文章是因为啥，通过输出不断的在某个领域加深护城河。
-
-### 3、演讲、ppt
-ppt演讲的过程中，如果你对某些方面不理解，很容易就会出现卡壳。
-
-### 4、学以致用
-读了很多书，却没有将书中的原理和方法，进行实践，就会慢慢的忘记。
-
-输出是最强大的学习力，而大多数人学习、看书都仅仅是看懂，根本不会坐下来思考、应用，所以注定是徒劳的。
+## 四、安装问题
+静态资源无法加载问题

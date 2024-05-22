@@ -11,7 +11,7 @@ const config: DocsThemeConfig = {
         }} 
         src="/images/favicon.ico" alt="logo" 
       />
-      <span>费曼学习</span>
+      <span>博客大全</span>
     </div>,
   // project: {
   //   link: 'https://github.com/shuding/nextra-docs-template',
