@@ -20,14 +20,13 @@ const config: DocsThemeConfig = {
   //   link: 'https://discord.com',
   // },
   docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
-  head: [
-    <link
+  head: <link
       key="favicon"
       rel="icon"
       href="/images/favicon.ico"
       type="image/x-icon"
     />
-  ],
+  ,
   footer: {
     text: '用提问的方式来学习',
   },

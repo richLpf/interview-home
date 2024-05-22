@@ -1,10 +1,17 @@
 {
   "index": {
     "title": "主页",
-    "type": "page"
+    "type": "page",
+    "theme": {
+      "layout": "raw"
+    }
   },
   "blog": {
-    "title": "个人成长系列",
+    "title": "博客系列",
+    "type": "page"
+  },
+  "feiman": {
+    "title": "个人系列",
     "type": "page"
   },
   "about": {
