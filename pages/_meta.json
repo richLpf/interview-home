@@ -10,18 +10,8 @@
     "title": "博客系列",
     "type": "page"
   },
-  "feiman": {
-    "title": "个人系列",
-    "type": "page"
-  },
   "about": {
     "title": "关于我们",
     "type": "page"
-  },
-  "contact": {
-    "title": "立即体验",
-    "type": "page",
-    "href": "https://console.questionlearn.cn",
-    "newWindow": true
   }
 }

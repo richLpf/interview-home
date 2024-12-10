@@ -7,18 +7,18 @@ const posts = [
     {
       id: "gitbook",
       title: "Gitbook搭建博客",
-      date: "04 Dec, 2023",
-      description: "通过markdown完成博客的搭建",
+      date: "2024-06-18",
+      description: "快速搭建gitbook，通过简单的markdown书写属于自己的知识库",
       category: "blog",
-      imageUrl: "/images/demo1.png",
+      imageUrl: "/images/gitbook.png",
     },
     {
       id: "hexo",
       title: "Hexo搭建博客",
-      date: "01 Dec, 2023",
+      date: "2024-06-18",
       description: "方便快捷的搭建博客",
       category: "blog",
-      imageUrl: "/images/demo1.png",
+      imageUrl: "/images/hexo.png",
     },
     {
       id: "gmeek",
@@ -34,7 +34,7 @@ const posts = [
       date: "18 Nov, 2023",
       description: "接入数据库，方便文章管理，主题全",
       category: "blog",
-      imageUrl: "/images/demo1.png",
+      imageUrl: "/images/wordpress.png",
     },
     {
       id: "6",
@@ -117,7 +117,7 @@ export default function Home() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {currentPosts.map((post) => (
           <div key={post.id} className="border rounded-lg p-4 flex flex-col">
-            <img src={post.imageUrl} alt={post.title} className="w-full h-auto rounded-lg mb-4" />
+            <img src={post.imageUrl} alt={post.title} className="w-full h-auto rounded-lg mb-4 img-style" />
             <h3 className="text-xl font-bold mb-2">{post.title}</h3>
             <p className="text-gray-500 mb-2">{post.date}</p>
             <p className="mb-4 flex-grow">{post.description}</p>
