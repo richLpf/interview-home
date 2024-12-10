@@ -17,7 +17,7 @@ jobs:
           ls -al
           pwd
           npm i -g pnpm
-          pnpm install --no-frozen-lockfile
+          pnpm install
           pnpm build
           ls -al
           cd .next
