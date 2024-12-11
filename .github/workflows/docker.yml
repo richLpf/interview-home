@@ -19,13 +19,15 @@ jobs:
           echo "Timezone set to $(date)"
 
       - name: show dir
-        run: ls -l
+        run: |
+          ls -l
+          echo ${{ secrets.DOCKER_REGISTRY }}
       
       # 构建 Docker 镜像
       - name: Build the Docker image
         run: docker build . --file ./Dockerfile.prod --tag ${{ secrets.DOCKER_REGISTRY }}/interview/frontend:${{ env.TIMESTAMP }}
 
-      # # 更换 Docker 名称
+      # 更换 Docker 名称
       # - name: Rename the Docker image
         # run: docker tag library/interview-frontend:${{ env.TIMESTAMP }} ${{ secrets.DOCKER_REGISTRY }}/interview/frontend:${{ env.TIMESTAMP }}
       
