@@ -28,7 +28,13 @@ const config: DocsThemeConfig = {
     />
   ,
   footer: {
-    text: '用提问的方式来学习',
+    text: (
+      <div style={{ textAlign: 'center' }}>
+        <div>
+          © 2024 博客大全 | <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">豫ICP备2021029374号-1</a>
+        </div>
+      </div>
+    )
   },
   search: {
     placeholder: '在这里输入搜索内容'
