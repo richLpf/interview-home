@@ -1,0 +1,42 @@
+# 构建阶段
+FROM node:20-alpine AS builder
+
+# 安装 pnpm
+RUN npm install -g pnpm
+
+# 设置工作目录
+WORKDIR /app
+
+# 拷贝 pnpm 配置文件和依赖文件
+COPY pnpm-lock.yaml ./
+COPY package.json ./
+
+# 安装依赖
+RUN pnpm install --frozen-lockfile
+
+# 拷贝所有项目文件
+COPY . .
+
+# 构建项目
+RUN pnpm build
+
+# 运行阶段
+FROM node:20-alpine AS runner
+
+# 安装 pnpm（用于运行阶段）
+RUN npm install -g pnpm
+
+# 设置工作目录
+WORKDIR /app
+
+# 从构建阶段复制构建成果
+COPY --from=builder /app ./
+
+# 安装生产依赖
+RUN pnpm install --prod
+
+# 暴露端口
+EXPOSE 3000
+
+# 启动应用
+CMD ["pnpm", "start"]

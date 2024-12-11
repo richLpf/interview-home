@@ -1,0 +1,51 @@
+name: fronted CI
+
+on:
+  push:
+    branches: [ "feature/*", "main", "pre" ]
+  pull_request:
+    branches: [ "feature/*", "main", "pre" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      # 设置时间戳环境变量
+      - name: Set timezone to UTC+8
+        run: |
+          sudo timedatectl set-timezone Asia/Shanghai
+          echo "Timezone set to $(date)"
+
+      - name: show dir
+        run: ls -l
+      
+      # 构建 Docker 镜像
+      - name: Build the Docker image
+        run: docker build . --file ./Dockerfile.prod --tag interview-frontend:${{ env.TIMESTAMP }}
+
+      # 更换 Docker 名称
+      - name: Rename the Docker image
+        run: docker tag library/interview-frontend:${{ env.TIMESTAMP }} ${{ secrets.DOCKER_REGISTRY }}/interview/frontend:${{ env.TIMESTAMP }}
+      
+      # 登录 Docker Hub
+      - name: Log in to Docker Hub
+        run: docker login ${{ secrets.DOCKER_REGISTRY }} -u ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
+      
+      # 推送 Docker 镜像到 Docker Hub
+      - name: Push the Docker image
+        run: docker push ${{ secrets.DOCKER_REGISTRY }}/interview/frontend:${{ env.TIMESTAMP }}
+      
+      # 在远程服务器执行脚本
+      - name: Run remote script
+        uses: appleboy/ssh-action@v0.1.5
+        with: 
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          script: |
+            docker pull ${{ secrets.DOCKER_REGISTRY }}/interview/frontend:${{ env.TIMESTAMP }}
+            docker stop interview-frontend
+            docker rm interview-frontend
+            docker run -d --name interview-frontend -p 443:3000 ${{ secrets.DOCKER_REGISTRY }}/interview/frontend:${{ env.TIMESTAMP }}
