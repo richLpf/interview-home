@@ -21,6 +21,8 @@ jobs:
           pnpm build
           ls -al
           cd .next
+          ls -al
+          echo "Current time: $(date)"
       - name: Deploy
         uses: easingthemes/ssh-deploy@main
         env:
