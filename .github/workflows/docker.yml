@@ -28,11 +28,11 @@ jobs:
       
       # 构建 Docker 镜像
       - name: Build the Docker image
-        run: docker build . --file ./Dockerfile.prod --tag ${{ secrets.DOCKER_REGISTRY }}/interview/frontend:${{ env.TIMESTAMP }}
+        run: docker build . --file ./Dockerfile.prod --tag library/interview-frontend:${{ env.TIMESTAMP }}
 
       # 更换 Docker 名称
-      # - name: Rename the Docker image
-        # run: docker tag library/interview-frontend:${{ env.TIMESTAMP }} ${{ secrets.DOCKER_REGISTRY }}/interview/frontend:${{ env.TIMESTAMP }}
+      - name: Rename the Docker image
+        run: docker tag library/interview-frontend:${{ env.TIMESTAMP }} ${{ secrets.DOCKER_REGISTRY }}/interview/frontend:${{ env.TIMESTAMP }}
       
       # 登录 Docker Hub
       - name: Log in to Docker Hub
