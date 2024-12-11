@@ -33,10 +33,10 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
             SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-            ARGS: "-rlgoDzvc -i"
+            ARGS: "-rlgoDzvc -i --include='.next/*'"
             REMOTE_USER: ${{ secrets.REMOTE_USER }}
             REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-            SOURCE: ".*next/*"
+            SOURCE: "*"
             TARGET: /data/interview/home/
             EXCLUDE: node_modules/
             SCRIPT_AGTER: |
