@@ -22,6 +22,8 @@ jobs:
         run: |
           ls -l
           echo ${{ secrets.DOCKER_REGISTRY }}
+          echo ${{ secrets.DOCKER_USERNAME }}
+          echo ${{ secrets.DOCKER_PASSWORD }}
       
       # 构建 Docker 镜像
       - name: Build the Docker image
