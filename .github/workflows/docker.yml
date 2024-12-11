@@ -20,10 +20,6 @@ jobs:
       - name: show dir
         run: |
           ls -l
-          echo "${{ secrets.DOCKER_REGISTRY }}" > registry.txt
-          cat registry.txt
-          echo ${{ secrets.DOCKER_USERNAME }}
-          echo ${{ secrets.DOCKER_PASSWORD }}
       
       # 构建 Docker 镜像
       - name: Build the Docker image

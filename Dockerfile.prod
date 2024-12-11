@@ -8,11 +8,10 @@ RUN npm install -g pnpm
 WORKDIR /app
 
 # 拷贝 pnpm 配置文件和依赖文件
-COPY pnpm-lock.yaml ./
 COPY package.json ./
 
 # 安装依赖
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 # 拷贝所有项目文件
 COPY . .
